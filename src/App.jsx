@@ -14,9 +14,21 @@ import MochiIcon from './components/MochiIcon';
 import ScatterDots from './components/ScatterDots';
 import { calculateSettlement, getAssignmentProgress, formatCurrency } from './utils/taxEngine';
 
+const QUOTES = [
+  "People who love to eat are always the best people. 🍡",
+  "There is no 'we' in fries. But there's definitely 'us' in Mochi! 🍟",
+  "Split the bill, not the friendship! 🌸",
+  "Food tastes better when you don't have to pay for all of it. 😉",
+  "Good food = Good mood. 🍕",
+  "Laughter is brightest where food is best! ✨",
+  "Count the memories, not just the calories. 🍛",
+  "Families are like fudge - mostly sweet with a few nuts! 🥜"
+];
+
 function App() {
   const [step, setStep] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [randomQuote] = useState(() => QUOTES[Math.floor(Math.random() * QUOTES.length)]);
   const [items, setItems] = useState([]);
   const [friends, setFriends] = useState([]);
   const [billMeta, setBillMeta] = useState({
@@ -25,7 +37,6 @@ function App() {
     taxPercent: 0,
     subtotal: 0,
   });
-
   const nextStep = () => setStep((s) => s + 1);
   const prevStep = () => setStep((s) => Math.max(1, s - 1));
   const resetFlow = () => {
@@ -50,7 +61,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (step === 5) {
-      const duration = 3 * 1000;
+      const duration = 1.5 * 1000;
       const animationEnd = Date.now() + duration;
       const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -108,7 +119,7 @@ function App() {
         </div>
 
         {/* Top Progress Line */}
-        {step < 5 && !isProcessing && (
+        {step > 1 && step < 5 && !isProcessing && (
           <div className="absolute bottom-[-1px] left-0 w-full h-[2px]">
             <motion.div
               className="h-full bg-mint-dark"
@@ -232,6 +243,13 @@ function App() {
                   restaurantName={billMeta.restaurantName}
                 />
               ))}
+
+              {/* Random fun quote at the bottom of the page */}
+              <div className="mt-8 mb-4 text-center px-4">
+                <p className="text-xs font-bold text-text-muted italic opacity-60">
+                  "{randomQuote}"
+                </p>
+              </div>
 
             </motion.div>
           )}

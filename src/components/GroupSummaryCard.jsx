@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, MessageSquare, Image as ImageIcon, MessageCircle } from 'lucide-react';
 import { toPng } from 'html-to-image';
@@ -10,19 +10,6 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
     const [imageCopied, setImageCopied] = useState(false);
     const [showShareModal, setShowShareModal] = useState(false);
     const cardRef = useRef(null);
-
-    const quotes = [
-        "People who love to eat are always the best people. 🍡",
-        "There is no 'we' in fries. But there's definitely 'us' in Mochi! 🍟",
-        "Split the bill, not the friendship! 🌸",
-        "Food tastes better when you don't have to pay for all of it. 😉",
-        "Good food = Good mood. 🍕",
-        "Laughter is brightest where food is best! ✨",
-        "Count the memories, not just the calories. 🍛",
-        "Families are like fudge - mostly sweet with a few nuts! 🥜"
-    ];
-
-    const randomQuote = useMemo(() => quotes[Math.floor(Math.random() * quotes.length)], []);
 
     const generateGroupMessage = () => {
         const restaurant = restaurantName || 'our meal';
@@ -167,13 +154,6 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
                     >
                         <MessageCircle size={13} /> WhatsApp
                     </motion.button>
-                </div>
-
-                {/* Random fun quote */}
-                <div className="mt-6 pt-4 border-t border-gray-100/50 text-center">
-                    <p className="text-[11px] font-bold text-text-muted italic tracking-wide">
-                        "{randomQuote}"
-                    </p>
                 </div>
             </motion.div>
 
