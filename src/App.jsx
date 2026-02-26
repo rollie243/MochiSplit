@@ -159,7 +159,7 @@ function App() {
           {step === 4 && (
             <motion.div key="step4" exit={{ opacity: 0, x: -40 }}>
               {/* Summary bar */}
-              <div className="bg-white py-3.5 border-b border-gray-100 mb-4 rounded-b-2xl shadow-sm">
+              <div className="bg-white py-3.5 px-4 border-b border-gray-100 mb-4 rounded-b-2xl shadow-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-extrabold text-text">Grand Total</span>
                   <span className="text-xl font-extrabold text-mint-dark">{formatCurrency(grandTotal)}</span>
