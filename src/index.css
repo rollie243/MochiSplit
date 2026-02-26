@@ -49,6 +49,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0 16px;
 }
 
 #root {
@@ -66,24 +67,12 @@ body {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 999px;
-}
-
-/* Typography */
-.text-hero {
-  font-size: 2.75rem;
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.text-title {
-  font-size: 1.75rem;
-  line-height: 1.15;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+body {
+  margin: 16px;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 .text-subtitle {
