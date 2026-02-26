@@ -85,7 +85,7 @@ function App() {
   const { settlements, grandTotal, totalSC, totalTax, billSubtotal } = calculateSettlement(items, friends, billMeta);
 
   return (
-    <div className="min-h-[100dvh] bg-bg font-sans text-text">
+    <div className="min-h-screen flex flex-col bg-bg font-sans text-text overflow-x-hidden">
       {/* Clean header */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 h-[56px] flex items-center relative">
         <div className="max-w-md mx-auto w-full flex items-center justify-between">
@@ -131,8 +131,8 @@ function App() {
         )}
       </header>
 
-      {/* Main */}
-      <main className="relative min-h-[calc(100dvh-56px)] flex flex-col app-layout">
+      {/* Main — flex-1 stretch ensures footer stays bottom */}
+      <main className="flex-1 flex flex-col app-layout mx-auto w-full relative">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div key="step1" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
@@ -259,7 +259,10 @@ function App() {
         </AnimatePresence>
 
         {/* Global Footer */}
-        <footer className="w-full text-center shrink-0 mt-auto pt-16 pb-20">
+        <footer
+          className="w-full text-center shrink-0 mt-auto py-[50px]"
+          style={{ paddingTop: '50px', paddingBottom: '20px' }}
+        >
           <p className="text-xs font-bold text-text-muted opacity-80">
             Made with curiosity IG:{' '}
             <a
