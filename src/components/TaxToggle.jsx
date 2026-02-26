@@ -24,7 +24,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             key={val}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setServiceChargePercent(val)}
-                            className={`px-4 py-2.5 rounded-full text-sm font-bold transition-all ${serviceChargePercent === val
+                            className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${serviceChargePercent === val
                                 ? 'bg-dark text-white shadow-md'
                                 : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
                                 }`}
@@ -42,7 +42,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             if (!isNaN(v) && v >= 0 && v <= 30) setServiceChargePercent(v);
                         }}
                         placeholder="Custom %"
-                        className={`w-28 px-4 py-2.5 rounded-full text-sm font-bold text-center border-2 transition-all ${!scPresets.includes(serviceChargePercent)
+                        className={`w-32 px-6 py-3 rounded-full text-sm font-bold text-center border-2 transition-all ${!scPresets.includes(serviceChargePercent)
                             ? 'border-dark bg-dark/5 text-text'
                             : 'border-gray-200 bg-white text-text-muted placeholder:text-text-muted'
                             }`}
@@ -67,7 +67,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             key={val}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setTaxPercent(val)}
-                            className={`px-4 py-2.5 rounded-full text-sm font-bold transition-all ${taxPercent === val
+                            className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${taxPercent === val
                                 ? 'bg-dark text-white shadow-md'
                                 : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
                                 }`}
@@ -85,7 +85,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             if (!isNaN(v) && v >= 0 && v <= 30) setTaxPercent(v);
                         }}
                         placeholder="Custom %"
-                        className={`w-28 px-4 py-2.5 rounded-full text-sm font-bold text-center border-2 transition-all ${!taxPresets.includes(taxPercent)
+                        className={`w-32 px-6 py-3 rounded-full text-sm font-bold text-center border-2 transition-all ${!taxPresets.includes(taxPercent)
                             ? 'border-dark bg-dark/5 text-text'
                             : 'border-gray-200 bg-white text-text-muted placeholder:text-text-muted'
                             }`}
