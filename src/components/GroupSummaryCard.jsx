@@ -109,7 +109,7 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
                     </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-3 border border-gray-100 mb-4 shadow-sm">
+                <div className="flex flex-col gap-3 mt-4 mb-6">
                     <div className="flex flex-col gap-2 text-sm">
                         {settlements.map((s) => (
                             <div key={s.friend.id} className="flex justify-between items-center">
@@ -118,8 +118,7 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
                             </div>
                         ))}
                     </div>
-                    <div className="h-px bg-gray-100 my-3" />
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-100/50">
                         <span className="text-xs font-extrabold text-text-muted uppercase tracking-widest">Total</span>
                         <span className="text-base font-extrabold text-mint-dark">{formatCurrency(grandTotal)}</span>
                     </div>
