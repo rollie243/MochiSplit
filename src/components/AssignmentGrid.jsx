@@ -44,13 +44,13 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     return (
         <div className="flex flex-col relative">
             {/* Sticky Header Group */}
-            <div className="sticky top-[56px] z-30 pt-10 pb-3 px-4 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
+            <div className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
                 {/* Friend selector bar */}
                 <div>
-                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1">
+                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-4">
                         Select a friend
                     </p>
-                    <div className="flex gap-3 overflow-x-auto pt-2 pb-1 scrollbar-none">
+                    <div className="flex gap-4 overflow-x-auto pt-3 pb-3 px-4 scrollbar-none">
                         {friends.map((friend) => (
                             <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0">
                                 <FriendAvatar
@@ -69,7 +69,7 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                 </div>
 
                 {/* Hint + Select All */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 px-4">
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest flex-1">
                         Tap items they ate
                     </p>
@@ -85,7 +85,7 @@ export default function AssignmentGrid({ items, setItems, friends }) {
             </div>
 
             {/* Items */}
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-2.5 px-4">
                 {items.map((item) => {
                     const isAssignedToSelected = item.assignedTo.includes(selectedFriendId);
                     const splitCount = item.assignedTo.length;
