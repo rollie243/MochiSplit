@@ -73,14 +73,14 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 30, height: 0 }}
                             transition={{ duration: 0.3, delay: idx * 0.03 }}
-                            className="card flex items-center gap-3"
+                            className="card flex items-center gap-2 min-w-0"
                         >
                             {editingId === item.id ? (
                                 <>
                                     <input
                                         value={editName}
                                         onChange={(e) => setEditName(e.target.value)}
-                                        className="flex-1 text-sm px-5 py-3 rounded-xl border border-mint bg-mint-light/20 font-semibold focus:bg-white transition-colors"
+                                        className="flex-1 min-w-0 text-sm px-3 py-2.5 rounded-xl border border-mint bg-mint-light/20 font-semibold focus:bg-white transition-colors"
                                         autoFocus
                                     />
                                     <input
@@ -88,9 +88,9 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                                         onChange={(e) => setEditPrice(e.target.value)}
                                         type="number"
                                         step="0.01"
-                                        className="w-24 text-sm px-5 py-3 rounded-xl border border-mint bg-mint-light/20 text-right font-bold focus:bg-white transition-colors"
+                                        className="w-20 text-sm px-3 py-2.5 rounded-xl border border-mint bg-mint-light/20 text-right font-bold focus:bg-white transition-colors"
                                     />
-                                    <button onClick={saveEdit} className="w-10 h-10 rounded-full bg-dark text-white flex items-center justify-center hover:bg-dark-soft transition-colors">
+                                    <button onClick={saveEdit} className="w-9 h-9 flex-shrink-0 rounded-full bg-dark text-white flex items-center justify-center hover:bg-dark-soft transition-colors">
                                         <Check size={15} />
                                     </button>
                                 </>
