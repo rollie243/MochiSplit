@@ -203,7 +203,7 @@ function App() {
               key="step5"
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="py-8 pb-20 flex flex-col gap-6 relative"
+              className="pt-12 pb-20 flex flex-col gap-6 relative"
             >
               <ScatterDots />
 

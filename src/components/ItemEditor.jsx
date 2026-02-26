@@ -53,12 +53,11 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col gap-5 py-6 pb-10"
+            className="flex flex-col gap-5 pt-12 pb-10"
         >
             {/* Single-line title */}
             <div className="mb-2">
                 <h1 className="text-title text-text">Review your <span className="text-peach-dark">yummy items</span> 🧾</h1>
-                <p className="text-sm text-text-secondary font-medium mt-2">Tap to edit, swipe to delete</p>
             </div>
 
             {/* Item list */}

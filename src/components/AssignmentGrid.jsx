@@ -44,7 +44,7 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     return (
         <div className="flex flex-col relative">
             {/* Sticky Header Group */}
-            <div className="sticky top-[56px] z-30 pt-4 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
+            <div className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
                 {/* Friend selector bar */}
                 <div>
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1">

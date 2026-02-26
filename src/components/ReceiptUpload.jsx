@@ -47,7 +47,7 @@ export default function ReceiptUpload({ onItemsExtracted, isProcessing, setIsPro
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] py-8 relative"
+            className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] pt-16 pb-8 relative"
         >
             <ScatterDots />
 
