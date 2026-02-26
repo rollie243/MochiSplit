@@ -1,0 +1,17 @@
+{
+    "name": "MochiSplit",
+    "short_name": "MochiSplit",
+    "description": "Split restaurant bills cutely with MochiSplit.",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FAFAFA",
+    "theme_color": "#1A1A2E",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍡</text></svg>",
+            "sizes": "48x48 72x72 96x96 128x128 144x144 152x152 192x192 384x384 512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
