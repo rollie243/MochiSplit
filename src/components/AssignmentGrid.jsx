@@ -47,10 +47,11 @@ export default function AssignmentGrid({ items, setItems, friends }) {
             <div className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
                 {/* Friend selector bar */}
                 <div>
-                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-4">
+                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-6">
                         Select a friend
                     </p>
-                    <div className="flex gap-4 overflow-x-auto pt-3 pb-3 px-4 scrollbar-none">
+                    <div className="flex gap-4 overflow-x-auto pt-4 pb-4 px-2 scrollbar-none items-center">
+                        <div className="w-4 shrink-0" /> {/* Left Spacer */}
                         {friends.map((friend) => (
                             <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0">
                                 <FriendAvatar
@@ -65,27 +66,31 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                                 </span>
                             </div>
                         ))}
+                        <div className="w-4 shrink-0" /> {/* Right Spacer */}
                     </div>
                 </div>
 
                 {/* Hint + Select All */}
-                <div className="flex items-center gap-2 px-4">
+                <div className="flex items-center gap-2 px-6">
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest flex-1">
                         Tap items they ate
                     </p>
                     <motion.button
                         whileTap={{ scale: 0.95 }}
                         onClick={selectAllForFriend}
-                        className={`pill-sm ${allAssignedToSelected ? 'pill-active' : 'pill-outline'}`}
+                        className={`pill-sm transition-all duration-200 ${allAssignedToSelected
+                            ? 'bg-dark/10 text-dark border-dark/30 shadow-none'
+                            : 'pill-outline'
+                            }`}
                     >
-                        <CheckCheck size={12} />
+                        <CheckCheck size={12} className={allAssignedToSelected ? 'text-dark' : 'text-text-muted'} />
                         {allAssignedToSelected ? 'Deselect all' : 'Select all'}
                     </motion.button>
                 </div>
             </div>
 
             {/* Items */}
-            <div className="flex flex-col gap-2.5 px-4">
+            <div className="flex flex-col gap-2.5 px-6">
                 {items.map((item) => {
                     const isAssignedToSelected = item.assignedTo.includes(selectedFriendId);
                     const splitCount = item.assignedTo.length;
