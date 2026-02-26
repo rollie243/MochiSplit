@@ -76,7 +76,7 @@ function App() {
   return (
     <div className="min-h-[100dvh] bg-bg font-sans text-text">
       {/* Clean header */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 h-[56px] flex items-center relative">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 h-[56px] flex items-center relative">
         <div className="max-w-md mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
             {step > 1 && !isProcessing && (
@@ -121,7 +121,7 @@ function App() {
       </header>
 
       {/* Main */}
-      <main className="max-w-md mx-auto w-full relative min-h-[calc(100dvh-56px)] flex flex-col">
+      <main className="max-w-md mx-auto w-full relative min-h-[calc(100dvh-56px)] px-6 flex flex-col">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div key="step1" exit={{ opacity: 0, x: -40 }}>
