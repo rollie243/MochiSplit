@@ -105,8 +105,8 @@ export default function FriendsManager({ friends, setFriends, onNext }) {
                                 key={n}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => addFriend(n)}
-                                className="px-5 py-2.5 text-xs rounded-full border-2 border-gray-200 text-text-secondary
-                  bg-white hover:border-mint hover:bg-mint-light/30 transition-all font-bold"
+                                className="px-6 py-3 text-xs rounded-full border-2 border-gray-200 text-text-secondary
+                  bg-white hover:border-mint hover:bg-mint-light/30 transition-all font-bold flex items-center gap-1"
                             >
                                 + {n}
                             </motion.button>

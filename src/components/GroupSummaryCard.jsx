@@ -139,7 +139,7 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
                     <motion.button
                         whileTap={{ scale: 0.95 }}
                         onClick={handleCopyAsImage}
-                        className={`flex-1 flex items-center justify-center gap-1.5 h-8 rounded-full text-xs font-bold transition-all shadow-sm ${imageCopied
+                        className={`flex-1 flex items-center justify-center gap-1.5 h-11 px-6 rounded-full text-xs font-bold transition-all shadow-sm ${imageCopied
                             ? 'bg-mint/40 text-mint-dark'
                             : 'bg-lavender/40 text-lavender-dark hover:bg-lavender/60'
                             }`}
@@ -150,7 +150,7 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
                     <motion.button
                         whileTap={{ scale: 0.95 }}
                         onClick={handleWhatsApp}
-                        className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-full text-xs font-bold bg-[#E8F9EF] text-[#21C05B] shadow-sm hover:bg-[#D4F4E2] transition-colors"
+                        className="flex-1 flex items-center justify-center gap-1.5 h-11 px-6 rounded-full text-xs font-bold bg-[#E8F9EF] text-[#21C05B] shadow-sm hover:bg-[#D4F4E2] transition-colors"
                     >
                         <MessageCircle size={13} /> WhatsApp
                     </motion.button>
