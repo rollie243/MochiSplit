@@ -132,7 +132,7 @@ function App() {
       </header>
 
       {/* Main */}
-      <main className="max-w-md mx-auto w-full relative min-h-[calc(100dvh-56px)] px-6 flex flex-col">
+      <main className="relative min-h-[calc(100dvh-56px)] flex flex-col app-layout">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div key="step1" exit={{ opacity: 0, x: -40 }}>

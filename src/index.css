@@ -51,6 +51,68 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Consistent Page Container */
+.app-layout {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The Unified Mochi Pill System */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  /* Balanced horizontal & vertical breathe */
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.pill-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+.pill-outline {
+  background: white;
+  border-color: #F3F4F6;
+  color: var(--color-text-secondary);
+}
+
+.pill-outline:hover {
+  border-color: var(--color-mint);
+  background: var(--color-mint-light);
+  color: var(--color-text);
+}
+
+.pill-solid {
+  background: var(--color-dark);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pill-solid:hover {
+  background: var(--color-dark-soft);
+  transform: translateY(-1px);
+}
+
+.pill-active {
+  background: var(--color-dark);
+  color: white;
+  border-color: var(--color-dark);
+}
+
+
 #root {
   min-height: 100dvh;
   display: flex;

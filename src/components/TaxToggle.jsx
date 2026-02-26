@@ -24,10 +24,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             key={val}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setServiceChargePercent(val)}
-                            className={`px-7 py-4 rounded-full text-sm font-bold transition-all ${serviceChargePercent === val
-                                ? 'bg-dark text-white shadow-md'
-                                : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
-                                }`}
+                            className={`pill ${serviceChargePercent === val ? 'pill-active' : 'pill-outline'}`}
                         >
                             {val === 0 ? 'Nope!' : `${val}%`}
                         </motion.button>
@@ -42,9 +39,9 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             if (!isNaN(v) && v >= 0 && v <= 30) setServiceChargePercent(v);
                         }}
                         placeholder="Custom %"
-                        className={`w-36 px-7 py-4 rounded-full text-sm font-bold text-center border-2 transition-all ${!scPresets.includes(serviceChargePercent)
-                            ? 'border-dark bg-dark/5 text-text'
-                            : 'border-gray-200 bg-white text-text-muted placeholder:text-text-muted'
+                        className={`pill text-center w-36 ${!scPresets.includes(serviceChargePercent)
+                            ? 'pill-active'
+                            : 'pill-outline'
                             }`}
                     />
                 </div>
@@ -67,10 +64,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             key={val}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setTaxPercent(val)}
-                            className={`px-7 py-4 rounded-full text-sm font-bold transition-all ${taxPercent === val
-                                ? 'bg-dark text-white shadow-md'
-                                : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
-                                }`}
+                            className={`pill ${taxPercent === val ? 'pill-active' : 'pill-outline'}`}
                         >
                             {val === 0 ? 'None' : `${val}%`}
                         </motion.button>
@@ -85,9 +79,9 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             if (!isNaN(v) && v >= 0 && v <= 30) setTaxPercent(v);
                         }}
                         placeholder="Custom %"
-                        className={`w-36 px-7 py-4 rounded-full text-sm font-bold text-center border-2 transition-all ${!taxPresets.includes(taxPercent)
-                            ? 'border-dark bg-dark/5 text-text'
-                            : 'border-gray-200 bg-white text-text-muted placeholder:text-text-muted'
+                        className={`pill text-center w-36 ${!taxPresets.includes(taxPercent)
+                            ? 'pill-active'
+                            : 'pill-outline'
                             }`}
                     />
                 </div>
