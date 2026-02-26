@@ -178,14 +178,15 @@ function App() {
                   All <span className="text-mint-dark">sorted!</span> 🌸
                 </h1>
 
-                {/* Totals summary */}
-                <div className="mt-5 inline-flex flex-col gap-1 bg-white rounded-2xl px-5 py-3 shadow-sm border border-gray-100">
-                  <div className="flex justify-between gap-8 text-sm font-bold">
-                    <span className="text-text-muted">Receipt Total</span>
+                {/* Totals summary - Clean single line */}
+                <div className="mt-4 flex items-center justify-center gap-3 text-sm font-bold opacity-60">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-text-muted">Receipt:</span>
                     <span className="text-text">{formatCurrency(grandTotal)}</span>
                   </div>
-                  <div className="flex justify-between gap-8 text-sm font-bold">
-                    <span className="text-text-muted">Assigned Total</span>
+                  <div className="w-1 h-1 rounded-full bg-gray-300" />
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-text-muted">Assigned:</span>
                     <span className="text-mint-dark">{formatCurrency(settlements.reduce((s, p) => s + p.total, 0))}</span>
                   </div>
                 </div>
