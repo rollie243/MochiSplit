@@ -18,13 +18,13 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                     </div>
                     <span className="text-2xl font-extrabold text-peach-dark">{serviceChargePercent}%</span>
                 </div>
-                <div className="flex gap-2.5 flex-wrap">
+                <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-3 px-3 scrollbar-none items-center">
                     {scPresets.map((val) => (
                         <motion.button
                             key={val}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setServiceChargePercent(val)}
-                            className={`pill ${serviceChargePercent === val ? 'pill-active' : 'pill-outline'}`}
+                            className={`pill shrink-0 ${serviceChargePercent === val ? 'pill-active' : 'pill-outline'}`}
                         >
                             {val === 0 ? 'Nope!' : `${val}%`}
                         </motion.button>
@@ -39,7 +39,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             if (!isNaN(v) && v >= 0 && v <= 30) setServiceChargePercent(v);
                         }}
                         placeholder="Custom %"
-                        className={`pill text-center w-36 ${!scPresets.includes(serviceChargePercent)
+                        className={`pill text-center shrink-0 w-28 px-3 py-1.5 ${!scPresets.includes(serviceChargePercent)
                             ? 'pill-active'
                             : 'pill-outline'
                             }`}
@@ -58,13 +58,13 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                     </div>
                     <span className="text-2xl font-extrabold text-lavender">{taxPercent}%</span>
                 </div>
-                <div className="flex gap-2.5 flex-wrap">
+                <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-3 px-3 scrollbar-none items-center">
                     {taxPresets.map((val) => (
                         <motion.button
                             key={val}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setTaxPercent(val)}
-                            className={`pill ${taxPercent === val ? 'pill-active' : 'pill-outline'}`}
+                            className={`pill shrink-0 ${taxPercent === val ? 'pill-active' : 'pill-outline'}`}
                         >
                             {val === 0 ? 'None' : `${val}%`}
                         </motion.button>
@@ -79,7 +79,7 @@ export default function TaxToggle({ serviceChargePercent, taxPercent, setService
                             if (!isNaN(v) && v >= 0 && v <= 30) setTaxPercent(v);
                         }}
                         placeholder="Custom %"
-                        className={`pill text-center w-36 ${!taxPresets.includes(taxPercent)
+                        className={`pill text-center shrink-0 w-28 px-3 py-1.5 ${!taxPresets.includes(taxPercent)
                             ? 'pill-active'
                             : 'pill-outline'
                             }`}

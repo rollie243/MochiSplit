@@ -135,7 +135,7 @@ function App() {
       <main className="relative min-h-[calc(100dvh-56px)] flex flex-col app-layout">
         <AnimatePresence mode="wait">
           {step === 1 && (
-            <motion.div key="step1" exit={{ opacity: 0, x: -40 }}>
+            <motion.div key="step1" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
               <ReceiptUpload
                 onItemsExtracted={handleItemsExtracted}
                 isProcessing={isProcessing}
@@ -145,21 +145,24 @@ function App() {
           )}
 
           {step === 2 && (
-            <motion.div key="step2" exit={{ opacity: 0, x: -40 }}>
+            <motion.div key="step2" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
               <ItemEditor items={items} setItems={setItems} billMeta={billMeta} setBillMeta={setBillMeta} onNext={nextStep} />
             </motion.div>
           )}
 
           {step === 3 && (
-            <motion.div key="step3" exit={{ opacity: 0, x: -40 }}>
+            <motion.div key="step3" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
               <FriendsManager friends={friends} setFriends={setFriends} onNext={nextStep} />
             </motion.div>
           )}
 
           {step === 4 && (
-            <motion.div key="step4" exit={{ opacity: 0, x: -40 }}>
+            <motion.div key="step4" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
               {/* Summary bar */}
-              <div className="bg-white py-3.5 px-6 border-b border-gray-100 mb-4 rounded-b-2xl shadow-sm">
+              <div
+                className="bg-white py-3.5 px-6 border-b border-gray-100 mb-4 rounded-b-2xl shadow-sm"
+                style={{ paddingLeft: '16px', paddingRight: '16px', paddingBottom: '16px' }}
+              >
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-extrabold text-text">Grand Total</span>
                   <span className="text-xl font-extrabold text-mint-dark">{formatCurrency(grandTotal)}</span>
@@ -203,7 +206,7 @@ function App() {
               key="step5"
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="pt-12 pb-20 flex flex-col gap-6 relative"
+              className="pt-12 pb-20 flex flex-col gap-6 relative flex-1"
             >
               <ScatterDots />
 
@@ -256,7 +259,7 @@ function App() {
         </AnimatePresence>
 
         {/* Global Footer */}
-        <div className="w-full text-center shrink-0 mt-auto pt-16 pb-8">
+        <footer className="w-full text-center shrink-0 mt-auto pt-16 pb-20">
           <p className="text-xs font-bold text-text-muted opacity-80">
             Made with curiosity IG:{' '}
             <a
@@ -268,7 +271,7 @@ function App() {
               rolandtey
             </a>
           </p>
-        </div>
+        </footer>
       </main>
     </div>
   );

@@ -78,7 +78,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                                     <input
                                         value={editName}
                                         onChange={(e) => setEditName(e.target.value)}
-                                        className="flex-1 text-sm px-3 py-3 rounded-xl border border-mint bg-mint-light/20 font-semibold"
+                                        className="flex-1 text-sm px-5 py-3 rounded-xl border border-mint bg-mint-light/20 font-semibold focus:bg-white transition-colors"
                                         autoFocus
                                     />
                                     <input
@@ -86,7 +86,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                                         onChange={(e) => setEditPrice(e.target.value)}
                                         type="number"
                                         step="0.01"
-                                        className="w-20 text-sm px-3 py-3 rounded-xl border border-mint bg-mint-light/20 text-right font-bold"
+                                        className="w-24 text-sm px-5 py-3 rounded-xl border border-mint bg-mint-light/20 text-right font-bold focus:bg-white transition-colors"
                                     />
                                     <button onClick={saveEdit} className="w-10 h-10 rounded-full bg-dark text-white flex items-center justify-center hover:bg-dark-soft transition-colors">
                                         <Check size={15} />
@@ -112,13 +112,13 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                 </AnimatePresence>
             </div>
 
-            {/* Add new item — taller inputs */}
-            <div className="card border-dashed !border-gray-300 flex items-center gap-2">
+            {/* Add new item — optimized to fit */}
+            <div className="card border-dashed !border-gray-300 flex items-center gap-2 !p-2 md:!p-3">
                 <input
                     value={newItemName}
                     onChange={(e) => setNewItemName(e.target.value)}
                     placeholder="Item name"
-                    className="flex-1 text-sm px-8 h-16 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted transition-all focus:border-mint"
+                    className="flex-1 text-sm px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted transition-all focus:border-mint focus:bg-white"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <input
@@ -127,14 +127,14 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                     placeholder="0.00"
                     type="number"
                     step="0.01"
-                    className="w-28 text-sm px-8 h-16 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted transition-all focus:border-mint"
+                    className="w-24 text-sm px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted transition-all focus:border-mint focus:bg-white"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={addItem}
-                    className="w-14 h-14 rounded-full bg-dark text-white flex items-center justify-center shadow-sm flex-shrink-0"
+                    className="w-12 h-12 rounded-full bg-dark text-white flex items-center justify-center shadow-sm flex-shrink-0"
                 >
                     <Plus size={20} />
                 </motion.button>

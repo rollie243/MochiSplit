@@ -75,8 +75,8 @@ export default function FriendsManager({ friends, setFriends, onNext }) {
                         value={inputName}
                         onChange={(e) => setInputName(e.target.value)}
                         placeholder="Friend's name..."
-                        className="w-full text-sm px-8 h-16 rounded-2xl border border-gray-200 bg-white
-              placeholder:text-text-muted font-bold transition-all focus:border-mint"
+                        className="w-full text-sm px-6 py-5 rounded-2xl border border-gray-200 bg-white
+              placeholder:text-text-muted font-bold transition-all focus:border-mint focus:bg-white"
                         onKeyDown={(e) => e.key === 'Enter' && addFriend()}
                     />
                 </div>

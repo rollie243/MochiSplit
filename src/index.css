@@ -66,12 +66,12 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  /* Balanced horizontal & vertical breathe */
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  /* Reduced height to make it less clunky */
   border-radius: 999px;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   border: 2px solid transparent;
@@ -79,7 +79,7 @@ body {
 }
 
 .pill-sm {
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
 }
 
@@ -131,6 +131,16 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #ddd;
   border-radius: 999px;
+}
+
+/* Scrollbar removal utility */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* Typography */
@@ -399,6 +409,10 @@ body {
 input,
 textarea {
   font-family: 'Quicksand', sans-serif;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
 }
 
 input:focus,

@@ -44,15 +44,18 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     return (
         <div className="flex flex-col relative">
             {/* Sticky Header Group */}
-            <div className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl overflow-visible">
+            <div
+                className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-0 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl overflow-visible"
+                style={{ paddingLeft: '12px', borderRightWidth: '0px', paddingRight: '12px', paddingTop: '6px' }}
+            >
                 {/* Friend selector bar */}
                 <div>
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-6">
                         Select a friend
                     </p>
                     <div
-                        className="flex gap-4 overflow-x-auto pt-3 pb-3 px-6 scrollbar-none items-center overflow-y-visible"
-                        style={{ paddingTop: '12px', paddingLeft: '12px' }}
+                        className="flex gap-4 overflow-x-auto py-3 px-6 -mx-6 scrollbar-none items-center overflow-y-visible"
+                        style={{ paddingLeft: '12px', paddingTop: '12px' }}
                     >
                         {friends.map((friend) => (
                             <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0">
@@ -72,7 +75,7 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                 </div>
 
                 {/* Hint + Select All */}
-                <div className="flex items-center gap-2 px-6">
+                <div className="flex items-center gap-2 px-6 pb-1">
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest flex-1">
                         Tap items they ate
                     </p>
