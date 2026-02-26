@@ -124,7 +124,7 @@ export default function ReceiptUpload({ onItemsExtracted, isProcessing, setIsPro
                         <motion.button
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            onClick={() => onItemsExtracted({ items: [], subtotal: 0, serviceChargePercent: null, taxPercent: null, restaurantName: '' })}
+                            onClick={() => onItemsExtracted({ items: [], subtotal: 0, serviceChargePercent: 10, taxPercent: 0, restaurantName: '', isManual: true })}
                             className="flex items-center gap-2 text-text-secondary font-bold text-sm
                 hover:text-mint-dark transition-colors"
                         >

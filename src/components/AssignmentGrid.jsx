@@ -42,7 +42,7 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     const allAssignedToSelected = items.every((item) => item.assignedTo.includes(selectedFriendId));
 
     return (
-        <div className="flex flex-col relative">
+        <div className="flex flex-col">
             {/* Sticky Header Group */}
             <div
                 className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-0 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl overflow-visible"

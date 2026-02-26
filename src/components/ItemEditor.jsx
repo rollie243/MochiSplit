@@ -57,7 +57,9 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
         >
             {/* Single-line title */}
             <div className="mb-2">
-                <h1 className="text-title text-text">Review your <span className="text-peach-dark">yummy items</span> 🧾</h1>
+                <h1 className="text-title text-text">
+                    {billMeta?.isManual ? "Add your" : "Review your"} <span className="text-peach-dark">yummy items</span> {billMeta?.isManual ? "✍️" : "🧾"}
+                </h1>
             </div>
 
             {/* Item list */}

@@ -53,6 +53,7 @@ function App() {
       serviceChargePercent: result.serviceChargePercent || 10,
       taxPercent: result.taxPercent || 0,
       subtotal: result.subtotal || 0,
+      isManual: !!result.isManual
     });
     nextStep();
   };
@@ -85,7 +86,7 @@ function App() {
   const { settlements, grandTotal, totalSC, totalTax, billSubtotal } = calculateSettlement(items, friends, billMeta);
 
   return (
-    <div className="min-h-screen flex flex-col bg-bg font-sans text-text overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-bg font-sans text-text">
       {/* Clean header */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 h-[56px] flex items-center relative">
         <div className="max-w-md mx-auto w-full flex items-center justify-between">
@@ -131,8 +132,7 @@ function App() {
         )}
       </header>
 
-      {/* Main — flex-1 stretch ensures footer stays bottom */}
-      <main className="flex-1 flex flex-col app-layout mx-auto w-full relative">
+      <main className="flex-1 flex flex-col app-layout mx-auto w-full">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div key="step1" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
@@ -157,7 +157,7 @@ function App() {
           )}
 
           {step === 4 && (
-            <motion.div key="step4" exit={{ opacity: 0, x: -40 }} className="flex-1 flex flex-col">
+            <motion.div key="step4" exit={{ opacity: 0, x: -40 }} className="flex flex-col">
               {/* Summary bar */}
               <div
                 className="bg-white py-3.5 px-6 border-b border-gray-100 mb-4 rounded-b-2xl shadow-sm"
