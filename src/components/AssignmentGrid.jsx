@@ -44,16 +44,16 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     return (
         <div className="flex flex-col relative">
             {/* Sticky Header Group */}
-            <div className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
+            <div className="sticky top-[56px] z-30 pt-10 pb-3 px-6 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
                 {/* Friend selector bar */}
                 <div>
-                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-6">
+                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1">
                         Select a friend
                     </p>
-                    <div className="flex gap-4 overflow-x-auto pt-4 pb-4 px-2 scrollbar-none items-center">
-                        <div className="w-4 shrink-0" /> {/* Left Spacer */}
+                    <div className="flex gap-4 overflow-x-auto pt-4 pb-4 -mx-6 px-6 scrollbar-none items-center">
+                        {/* No more manual spacers needed with the -mx-6 px-6 trick */}
                         {friends.map((friend) => (
-                            <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0">
+                            <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0 p-2">
                                 <FriendAvatar
                                     friend={friend}
                                     size="md"
@@ -66,12 +66,11 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                                 </span>
                             </div>
                         ))}
-                        <div className="w-4 shrink-0" /> {/* Right Spacer */}
                     </div>
                 </div>
 
                 {/* Hint + Select All */}
-                <div className="flex items-center gap-2 px-6">
+                <div className="flex items-center gap-2">
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest flex-1">
                         Tap items they ate
                     </p>
