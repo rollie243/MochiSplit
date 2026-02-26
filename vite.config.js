@@ -3,5 +3,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  base: '/MochiSplit/',
   plugins: [react(), tailwindcss()],
+  server: {
+    host: true, // Listen on all local IPs
+  }
 })
