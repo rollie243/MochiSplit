@@ -50,9 +50,12 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-6">
                         Select a friend
                     </p>
-                    <div className="flex gap-4 overflow-x-auto pt-3 pb-3 px-6 scrollbar-none items-center overflow-y-visible">
+                    <div
+                        className="flex gap-4 overflow-x-auto pt-3 pb-3 px-6 scrollbar-none items-center overflow-y-visible"
+                        style={{ paddingTop: '12px', paddingLeft: '12px' }}
+                    >
                         {friends.map((friend) => (
-                            <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0 p-1">
+                            <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0">
                                 <FriendAvatar
                                     friend={friend}
                                     size="md"
