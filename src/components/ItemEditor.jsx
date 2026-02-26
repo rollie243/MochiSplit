@@ -119,7 +119,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                     value={newItemName}
                     onChange={(e) => setNewItemName(e.target.value)}
                     placeholder="Item name"
-                    className="flex-1 text-sm px-6 h-14 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted"
+                    className="flex-1 text-sm px-8 h-16 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted transition-all focus:border-mint"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <input
@@ -128,7 +128,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                     placeholder="0.00"
                     type="number"
                     step="0.01"
-                    className="w-24 text-sm px-6 h-14 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted"
+                    className="w-28 text-sm px-8 h-16 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted transition-all focus:border-mint"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <motion.button
