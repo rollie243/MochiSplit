@@ -23,41 +23,65 @@ export default function SettlementCard({ settlement, restaurantName }) {
         if (logoEl) logoEl.style.display = 'flex';
 
         try {
-            const dataUrl = await toPng(cardRef.current, {
-                backgroundColor: '#FAFAFA',
-                pixelRatio: 2,
-            });
-
-            // Restore UI
-            if (buttonsEl) buttonsEl.style.display = '';
-            if (logoEl) logoEl.style.display = 'none';
-
-            const res = await fetch(dataUrl);
-            const blob = await res.blob();
-
-            await navigator.clipboard.write([
-                new ClipboardItem({ 'image/png': blob }),
-            ]);
-
-            setImageCopied(true);
-            setTimeout(() => setImageCopied(false), 2500);
-        } catch (err) {
-            console.error('Copy as image failed:', err);
-            // Restore UI
-            if (buttonsEl) buttonsEl.style.display = '';
-            if (logoEl) logoEl.style.display = 'none';
-
-            // Fallback: download
-            try {
+            // Safari timeout workaround: Pass an unresolved promise directly to ClipboardItem
+            const makeImagePromise = async () => {
                 const dataUrl = await toPng(cardRef.current, { backgroundColor: '#FAFAFA', pixelRatio: 2 });
-                const link = document.createElement('a');
-                link.download = `${friend.name}-share.png`;
-                link.href = dataUrl;
-                link.click();
+                // Restore UI immediately after rasterizing
+                if (buttonsEl) buttonsEl.style.display = '';
+                if (logoEl) logoEl.style.display = 'none';
+
+                const res = await fetch(dataUrl);
+                return await res.blob();
+            };
+
+            if (window.ClipboardItem) {
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': makeImagePromise() })
+                ]);
                 setImageCopied(true);
                 setTimeout(() => setImageCopied(false), 2500);
+            } else {
+                throw new Error("ClipboardItem not supported");
+            }
+        } catch (err) {
+            console.error('Clipboard copy failed, trying Web Share API:', err);
+
+            // Restore UI just in case it failed early
+            if (buttonsEl) buttonsEl.style.display = '';
+            if (logoEl) logoEl.style.display = 'none';
+
+            try {
+                // First Fallback: Native Mobile Share Sheet (allows sending direct to WhatsApp)
+                const dataUrl = await toPng(cardRef.current, { backgroundColor: '#FAFAFA', pixelRatio: 2 });
+                const res = await fetch(dataUrl);
+                const blob = await res.blob();
+                const file = new File([blob], `${friend.name}-split.png`, { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: `${friend.name}'s MochiSplit`,
+                    });
+                    setImageCopied(true);
+                    setTimeout(() => setImageCopied(false), 2500);
+                } else {
+                    throw new Error("Web Share API not supported for files");
+                }
             } catch (e2) {
-                console.error('Download fallback also failed:', e2);
+                console.error('Web Share failed, downloading instead:', e2);
+
+                // Last Fallback: Direct File Download
+                try {
+                    const dataUrl = await toPng(cardRef.current, { backgroundColor: '#FAFAFA', pixelRatio: 2 });
+                    const link = document.createElement('a');
+                    link.download = `${friend.name}-share.png`;
+                    link.href = dataUrl;
+                    link.click();
+                    setImageCopied(true);
+                    setTimeout(() => setImageCopied(false), 2500);
+                } catch (e3) {
+                    console.error('Download fallback failed:', e3);
+                }
             }
         }
     };
@@ -162,8 +186,8 @@ export default function SettlementCard({ settlement, restaurantName }) {
                             whileTap={{ scale: 0.95 }}
                             onClick={handleCopyAsImage}
                             className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-full text-xs font-bold border-2 transition-all ${imageCopied
-                                    ? 'bg-mint-light border-mint text-mint-dark'
-                                    : 'bg-white border-gray-200 text-text-secondary hover:border-gray-300'
+                                ? 'bg-mint-light border-mint text-mint-dark'
+                                : 'bg-white border-gray-200 text-text-secondary hover:border-gray-300'
                                 }`}
                         >
                             {imageCopied ? <><Check size={13} /> Copied!</> : <><ImageIcon size={13} /> Copy as Image</>}

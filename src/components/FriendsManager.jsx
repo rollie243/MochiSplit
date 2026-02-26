@@ -71,12 +71,11 @@ export default function FriendsManager({ friends, setFriends, onNext }) {
             {/* Taller input + button */}
             <div className="flex items-center gap-2">
                 <div className="flex-1 relative">
-                    <UserPlus size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
                     <input
                         value={inputName}
                         onChange={(e) => setInputName(e.target.value)}
                         placeholder="Friend's name..."
-                        className="w-full text-sm pl-10 pr-4 py-4 rounded-2xl border-2 border-gray-200 bg-white
+                        className="w-full text-sm px-4 h-14 rounded-2xl border-2 border-gray-200 bg-white
               placeholder:text-text-muted font-semibold"
                         onKeyDown={(e) => e.key === 'Enter' && addFriend()}
                     />
@@ -85,7 +84,7 @@ export default function FriendsManager({ friends, setFriends, onNext }) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => addFriend()}
-                    className="btn-primary !py-4 !px-6"
+                    className="btn-primary !h-14 !px-6"
                 >
                     Add
                 </motion.button>

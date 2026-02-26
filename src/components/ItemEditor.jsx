@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Trash2, Edit3, Check, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '../utils/taxEngine';
+import TaxToggle from './TaxToggle';
 
-export default function ItemEditor({ items, setItems, billMeta, onNext }) {
+export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onNext }) {
     const [editingId, setEditingId] = useState(null);
     const [newItemName, setNewItemName] = useState('');
     const [newItemPrice, setNewItemPrice] = useState('');
@@ -118,7 +119,7 @@ export default function ItemEditor({ items, setItems, billMeta, onNext }) {
                     value={newItemName}
                     onChange={(e) => setNewItemName(e.target.value)}
                     placeholder="Item name"
-                    className="flex-1 text-sm px-3 py-3.5 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted"
+                    className="flex-1 text-sm px-4 h-14 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <input
@@ -127,46 +128,56 @@ export default function ItemEditor({ items, setItems, billMeta, onNext }) {
                     placeholder="0.00"
                     type="number"
                     step="0.01"
-                    className="w-24 text-sm px-3 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted"
+                    className="w-24 text-sm px-4 h-14 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={addItem}
-                    className="w-12 h-12 rounded-full bg-dark text-white flex items-center justify-center shadow-sm flex-shrink-0"
+                    className="w-14 h-14 rounded-full bg-dark text-white flex items-center justify-center shadow-sm flex-shrink-0"
                 >
                     <Plus size={20} />
                 </motion.button>
             </div>
 
-            {/* Totals */}
+            {/* Totals & Tax Configuration */}
             {items.length > 0 && (
-                <div className="card !bg-gray-50 flex flex-col gap-1.5">
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm font-bold text-text-secondary">
-                            Subtotal · {items.length} item{items.length !== 1 ? 's' : ''}
-                        </span>
-                        <span className="text-sm font-extrabold text-text-secondary">{formatCurrency(subtotal)}</span>
+                <>
+                    <div className="-mx-4 bg-white border-t border-gray-100">
+                        <TaxToggle
+                            serviceChargePercent={billMeta.serviceChargePercent}
+                            taxPercent={billMeta.taxPercent}
+                            setServiceChargePercent={(val) => setBillMeta((p) => ({ ...p, serviceChargePercent: val }))}
+                            setTaxPercent={(val) => setBillMeta((p) => ({ ...p, taxPercent: val }))}
+                        />
                     </div>
-                    {scPercent > 0 && (
+                    <div className="card !bg-gray-50 flex flex-col gap-1.5 mt-2 shadow-sm border border-gray-200">
                         <div className="flex justify-between items-center">
-                            <span className="text-xs font-bold text-text-muted">Service Charge ({scPercent}%)</span>
-                            <span className="text-xs font-bold text-text-muted">{formatCurrency(sc)}</span>
+                            <span className="text-sm font-bold text-text-secondary">
+                                Subtotal · {items.length} item{items.length !== 1 ? 's' : ''}
+                            </span>
+                            <span className="text-sm font-extrabold text-text-secondary">{formatCurrency(subtotal)}</span>
                         </div>
-                    )}
-                    {taxPercent > 0 && (
+                        {scPercent > 0 && (
+                            <div className="flex justify-between items-center">
+                                <span className="text-xs font-bold text-text-muted">Service Charge ({scPercent}%)</span>
+                                <span className="text-xs font-bold text-text-muted">{formatCurrency(sc)}</span>
+                            </div>
+                        )}
+                        {taxPercent > 0 && (
+                            <div className="flex justify-between items-center">
+                                <span className="text-xs font-bold text-text-muted">Tax ({taxPercent}%)</span>
+                                <span className="text-xs font-bold text-text-muted">{formatCurrency(tax)}</span>
+                            </div>
+                        )}
+                        <div className="h-px bg-gray-200 my-1" />
                         <div className="flex justify-between items-center">
-                            <span className="text-xs font-bold text-text-muted">Tax ({taxPercent}%)</span>
-                            <span className="text-xs font-bold text-text-muted">{formatCurrency(tax)}</span>
+                            <span className="text-base font-extrabold text-text">Receipt Total</span>
+                            <span className="text-xl font-extrabold text-text">{formatCurrency(receiptTotal)}</span>
                         </div>
-                    )}
-                    <div className="h-px bg-gray-200 my-0.5" />
-                    <div className="flex justify-between items-center">
-                        <span className="text-base font-extrabold text-text">Receipt Total</span>
-                        <span className="text-xl font-extrabold text-text">{formatCurrency(receiptTotal)}</span>
                     </div>
-                </div>
+                </>
             )}
 
             {/* Next button */}

@@ -95,7 +95,7 @@ function App() {
       </header>
 
       {/* Main */}
-      <main className="max-w-md mx-auto relative min-h-[calc(100dvh-56px)] px-4 overflow-y-auto">
+      <main className="max-w-md mx-auto relative min-h-[calc(100dvh-56px)] px-4">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div key="step1" exit={{ opacity: 0, x: -40 }}>
@@ -109,7 +109,7 @@ function App() {
 
           {step === 2 && (
             <motion.div key="step2" exit={{ opacity: 0, x: -40 }}>
-              <ItemEditor items={items} setItems={setItems} billMeta={billMeta} onNext={nextStep} />
+              <ItemEditor items={items} setItems={setItems} billMeta={billMeta} setBillMeta={setBillMeta} onNext={nextStep} />
             </motion.div>
           )}
 
@@ -122,7 +122,7 @@ function App() {
           {step === 4 && (
             <motion.div key="step4" exit={{ opacity: 0, x: -40 }}>
               {/* Summary bar */}
-              <div className="bg-white -mx-4 px-4 py-3.5 border-b border-gray-100 sticky top-[56px] z-20">
+              <div className="bg-white -mx-4 px-4 py-3.5 border-b border-gray-100 mb-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-extrabold text-text">Grand Total</span>
                   <span className="text-xl font-extrabold text-mint-dark">{formatCurrency(grandTotal)}</span>
@@ -133,15 +133,10 @@ function App() {
                 </div>
               </div>
 
-              <TaxToggle
-                serviceChargePercent={billMeta.serviceChargePercent}
-                taxPercent={billMeta.taxPercent}
-                setServiceChargePercent={(val) => setBillMeta((p) => ({ ...p, serviceChargePercent: val }))}
-                setTaxPercent={(val) => setBillMeta((p) => ({ ...p, taxPercent: val }))}
-              />
+
 
               <AssignmentGrid items={items} setItems={setItems} friends={friends} />
-              <ProgressBar progress={progress} />
+
 
               {/* Settle Up button */}
               <AnimatePresence>
@@ -150,7 +145,7 @@ function App() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 40 }}
-                    className="fixed bottom-20 left-0 right-0 pointer-events-none z-50 flex justify-center"
+                    className="fixed bottom-8 left-0 right-0 pointer-events-none z-50 flex justify-center"
                   >
                     <motion.button
                       whileHover={{ scale: 1.03 }}
@@ -204,12 +199,24 @@ function App() {
                 />
               ))}
 
-              <p className="text-center text-xs font-bold text-text-muted mt-4 opacity-40">
-                Made with 🍡 by MochiSplit
-              </p>
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Global Footer */}
+        <div className="w-full text-center py-6 mt-4">
+          <p className="text-xs font-bold text-text-muted opacity-70">
+            Made with curiosity IG:{' '}
+            <a
+              href="https://www.instagram.com/rolandtey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-peach-dark hover:text-mint-dark transition-colors font-extrabold ml-1"
+            >
+              rolandtey
+            </a>
+          </p>
+        </div>
       </main>
     </div>
   );
