@@ -19,7 +19,7 @@ export default function GroupSummaryCard({ settlements, restaurantName, grandTot
             msg += `• ${s.friend.name}: *${formatCurrency(s.total)}*\n`;
         });
 
-        msg += `\nGrand Total: ${formatCurrency(grandTotal)}\n\nThanks! ✨`;
+        msg += `\nGrand Total: ${formatCurrency(grandTotal)}\n\nSplit cutely with MochiSplit! 🍡: https://rollie243.github.io/MochiSplit/`;
         return msg;
     };
 

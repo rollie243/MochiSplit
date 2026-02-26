@@ -20,7 +20,7 @@ export default function ShareWhatsApp({ settlement, restaurantName, show, onClos
             if (serviceCharge > 0) msg += `Service Charge: ${formatCurrency(serviceCharge)}\n`;
             if (tax > 0) msg += `Tax: ${formatCurrency(tax)}\n`;
         }
-        msg += `\nTotal: *${formatCurrency(total)}* 🌸\n\nThanks! ✨`;
+        msg += `\nTotal: *${formatCurrency(total)}* 🌸\n\nSplit cutely with MochiSplit! 🍡: https://rollie243.github.io/MochiSplit/`;
         return msg;
     };
 
