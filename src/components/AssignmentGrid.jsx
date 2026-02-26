@@ -42,9 +42,9 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     const allAssignedToSelected = items.every((item) => item.assignedTo.includes(selectedFriendId));
 
     return (
-        <div className="flex flex-col pb-44 relative">
+        <div className="flex flex-col relative">
             {/* Sticky Header Group */}
-            <div className="sticky top-[56px] z-30 -mx-4 px-4 pt-4 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4">
+            <div className="sticky top-[56px] z-30 pt-4 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl">
                 {/* Friend selector bar */}
                 <div>
                     <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1">
@@ -153,6 +153,9 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                     );
                 })}
             </div>
+
+            {/* Bottom spacer to prevent button overlap */}
+            <div className="h-20 shrink-0 w-full" />
         </div>
     );
 }

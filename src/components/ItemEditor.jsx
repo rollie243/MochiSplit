@@ -144,7 +144,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
             {/* Totals & Tax Configuration */}
             {items.length > 0 && (
                 <>
-                    <div className="-mx-4 bg-white border-t border-gray-100">
+                    <div className="bg-white border-t border-gray-100 rounded-2xl mt-4">
                         <TaxToggle
                             serviceChargePercent={billMeta.serviceChargePercent}
                             taxPercent={billMeta.taxPercent}

@@ -8,6 +8,7 @@ import AssignmentGrid from './components/AssignmentGrid';
 import ProgressBar from './components/ProgressBar';
 import TaxToggle from './components/TaxToggle';
 import SettlementCard from './components/SettlementCard';
+import GroupSummaryCard from './components/GroupSummaryCard';
 import MochiIcon from './components/MochiIcon';
 import ScatterDots from './components/ScatterDots';
 import { calculateSettlement, getAssignmentProgress, formatCurrency } from './utils/taxEngine';
@@ -50,8 +51,8 @@ function App() {
   return (
     <div className="min-h-[100dvh] bg-bg font-sans text-text">
       {/* Clean header */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-4 py-3">
-        <div className="max-w-md mx-auto flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-4 h-[56px] flex items-center relative">
+        <div className="max-w-md mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
             {step > 1 && !isProcessing && (
               <motion.button
@@ -69,18 +70,6 @@ function App() {
           </div>
 
           <div className="flex items-center gap-2">
-            {step > 1 && step < 5 && !isProcessing && (
-              <div className="flex gap-1.5 items-center mr-1">
-                {[2, 3, 4].map((s) => (
-                  <div
-                    key={s}
-                    className={`h-2 rounded-full transition-all duration-300 ${step >= s ? 'w-6 bg-dark' : 'w-2 bg-gray-200'
-                      }`}
-                  />
-                ))}
-              </div>
-            )}
-
             {step === 5 && (
               <motion.button
                 whileTap={{ scale: 0.95 }}
@@ -92,10 +81,22 @@ function App() {
             )}
           </div>
         </div>
+
+        {/* Top Progress Line */}
+        {step < 5 && !isProcessing && (
+          <div className="absolute bottom-[-1px] left-0 w-full h-[2px]">
+            <motion.div
+              className="h-full bg-mint-dark"
+              initial={{ width: '0%' }}
+              animate={{ width: `${(step / 4) * 100}%` }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+            />
+          </div>
+        )}
       </header>
 
       {/* Main */}
-      <main className="max-w-md mx-auto relative min-h-[calc(100dvh-56px)] px-4">
+      <main className="max-w-md mx-auto w-full relative min-h-[calc(100dvh-56px)] px-4 flex flex-col">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div key="step1" exit={{ opacity: 0, x: -40 }}>
@@ -122,7 +123,7 @@ function App() {
           {step === 4 && (
             <motion.div key="step4" exit={{ opacity: 0, x: -40 }}>
               {/* Summary bar */}
-              <div className="bg-white -mx-4 px-4 py-3.5 border-b border-gray-100 mb-2">
+              <div className="bg-white py-3.5 border-b border-gray-100 mb-4 rounded-b-2xl shadow-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-extrabold text-text">Grand Total</span>
                   <span className="text-xl font-extrabold text-mint-dark">{formatCurrency(grandTotal)}</span>
@@ -140,7 +141,7 @@ function App() {
 
               {/* Settle Up button */}
               <AnimatePresence>
-                {progress === 100 && (
+                {progress > 0 && (
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -190,6 +191,13 @@ function App() {
                 </div>
               </div>
 
+              {/* Group Summary */}
+              <GroupSummaryCard
+                settlements={settlements}
+                restaurantName={billMeta.restaurantName}
+                grandTotal={grandTotal}
+              />
+
               {/* Settlement cards */}
               {settlements.map((s) => (
                 <SettlementCard
@@ -204,8 +212,8 @@ function App() {
         </AnimatePresence>
 
         {/* Global Footer */}
-        <div className="w-full text-center py-6 mt-4">
-          <p className="text-xs font-bold text-text-muted opacity-70">
+        <div className="w-full text-center shrink-0 mt-auto pt-16 pb-8">
+          <p className="text-xs font-bold text-text-muted opacity-80">
             Made with curiosity IG:{' '}
             <a
               href="https://www.instagram.com/rolandtey"

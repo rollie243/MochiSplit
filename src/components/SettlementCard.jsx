@@ -185,9 +185,9 @@ export default function SettlementCard({ settlement, restaurantName }) {
                         <motion.button
                             whileTap={{ scale: 0.95 }}
                             onClick={handleCopyAsImage}
-                            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-full text-xs font-bold border-2 transition-all ${imageCopied
-                                ? 'bg-mint-light border-mint text-mint-dark'
-                                : 'bg-white border-gray-200 text-text-secondary hover:border-gray-300'
+                            className={`flex-1 flex items-center justify-center gap-1.5 h-8 rounded-full text-xs font-bold transition-all shadow-sm ${imageCopied
+                                ? 'bg-mint/40 text-mint-dark'
+                                : 'bg-lavender/40 text-lavender-dark hover:bg-lavender/60'
                                 }`}
                         >
                             {imageCopied ? <><Check size={13} /> Copied!</> : <><ImageIcon size={13} /> Copy as Image</>}
@@ -196,7 +196,7 @@ export default function SettlementCard({ settlement, restaurantName }) {
                         <motion.button
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setShowShareModal(true)}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-full text-xs font-bold bg-[#25D366] text-white hover:bg-[#1EBE5A] transition-colors"
+                            className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-full text-xs font-bold bg-[#E8F9EF] text-[#21C05B] shadow-sm hover:bg-[#D4F4E2] transition-colors"
                         >
                             <MessageCircle size={13} /> WhatsApp
                         </motion.button>
