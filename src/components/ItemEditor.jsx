@@ -115,12 +115,12 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
             </div>
 
             {/* Add new item — optimized to fit */}
-            <div className="card border-dashed !border-gray-300 flex items-center gap-2 !p-2 md:!p-3">
+            <div className="card border-dashed !border-gray-300 flex items-center gap-2 !p-2 md:!p-3 min-w-0">
                 <input
                     value={newItemName}
                     onChange={(e) => setNewItemName(e.target.value)}
                     placeholder="Item name"
-                    className="flex-1 text-sm px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted transition-all focus:border-mint focus:bg-white"
+                    className="flex-1 min-w-0 text-sm px-3 py-3.5 rounded-xl border border-gray-200 bg-gray-50 font-semibold placeholder:text-text-muted transition-all focus:border-mint focus:bg-white"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <input
@@ -129,7 +129,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                     placeholder="0.00"
                     type="number"
                     step="0.01"
-                    className="w-24 text-sm px-4 py-4 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted transition-all focus:border-mint focus:bg-white"
+                    className="w-20 text-sm px-3 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-right font-bold placeholder:text-text-muted transition-all focus:border-mint focus:bg-white"
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 />
                 <motion.button
