@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
+import CrystalPet from './components/CrystalPet';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, RotateCcw } from 'lucide-react';
 import ReceiptUpload from './components/ReceiptUpload';
@@ -258,7 +259,12 @@ function App() {
           )}
         </AnimatePresence>
 
-        {/* Global Footer */}
+        {/* Crystal Mochi — floating desktop pet */}
+      <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9999 }}>
+        <CrystalPet />
+      </div>
+
+      {/* Global Footer */}
         <footer
           className="w-full text-center shrink-0 mt-auto py-[50px]"
           style={{ paddingTop: '50px', paddingBottom: '20px' }}
