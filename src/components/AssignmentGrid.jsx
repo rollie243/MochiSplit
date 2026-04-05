@@ -44,29 +44,22 @@ export default function AssignmentGrid({ items, setItems, friends }) {
     return (
         <div className="flex flex-col">
             {/* Sticky Header Group */}
-            <div
-                className="sticky top-[56px] z-30 pt-10 pb-3 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col gap-0 shadow-[0_4px_12px_rgba(0,0,0,0.02)] mb-4 rounded-b-2xl overflow-visible"
-                style={{ paddingLeft: '12px', borderRightWidth: '0px', paddingRight: '12px', paddingTop: '6px' }}
-            >
+            <div className="sticky top-[56px] z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 flex flex-col shadow-sm mb-4 -mx-5 px-5 rounded-b-2xl">
                 {/* Friend selector bar */}
-                <div>
-                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest mb-1 px-6">
+                <div className="pt-4 pb-2">
+                    <p className="text-[10px] font-extrabold text-text-muted uppercase tracking-widest mb-2 px-1">
                         Select a friend
                     </p>
-                    <div
-                        className="flex gap-4 overflow-x-auto py-3 px-6 -mx-6 scrollbar-none items-center overflow-y-visible"
-                        style={{ paddingLeft: '12px', paddingTop: '12px' }}
-                    >
+                    <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-none items-center">
                         {friends.map((friend) => (
-                            <div key={friend.id} className="flex flex-col items-center gap-1 shrink-0">
+                            <div key={friend.id} className="flex flex-col items-center gap-1.5 shrink-0 min-w-[64px]">
                                 <FriendAvatar
                                     friend={friend}
                                     size="md"
                                     selected={selectedFriendId === friend.id}
                                     onClick={() => setSelectedFriendId(friend.id)}
                                 />
-                                <span className={`text-[10px] font-bold max-w-16 truncate ${selectedFriendId === friend.id ? 'text-text' : 'text-text-muted'
-                                    }`}>
+                                <span className={`text-[10px] font-bold max-w-[64px] truncate ${selectedFriendId === friend.id ? 'text-text' : 'text-text-muted'}`}>
                                     {friend.name}
                                 </span>
                             </div>
@@ -75,26 +68,26 @@ export default function AssignmentGrid({ items, setItems, friends }) {
                 </div>
 
                 {/* Hint + Select All */}
-                <div className="flex items-center gap-2 px-6 pb-1">
-                    <p className="text-xs font-extrabold text-text-muted uppercase tracking-widest flex-1">
+                <div className="flex items-center justify-between gap-2 pb-3 px-1">
+                    <p className="text-[10px] font-extrabold text-text-muted uppercase tracking-widest">
                         Tap items they ate
                     </p>
                     <motion.button
                         whileTap={{ scale: 0.95 }}
                         onClick={selectAllForFriend}
-                        className={`pill-sm transition-all duration-200 ${allAssignedToSelected
+                        className={`pill pill-sm transition-all duration-200 ${allAssignedToSelected
                             ? 'bg-mint-light text-mint-dark border-mint-dark/30 shadow-none'
                             : 'pill-outline'
                             }`}
                     >
-                        <CheckCheck size={12} className={allAssignedToSelected ? 'text-mint-dark' : 'text-text-muted'} />
+                        <CheckCheck size={12} className={allAssignedToSelected ? 'text-mint-dark' : 'text-text-secondary'} />
                         {allAssignedToSelected ? 'Deselect all' : 'Select all'}
                     </motion.button>
                 </div>
             </div>
 
             {/* Items */}
-            <div className="flex flex-col gap-2.5 px-6">
+            <div className="flex flex-col gap-3 px-1">
                 {items.map((item) => {
                     const isAssignedToSelected = item.assignedTo.includes(selectedFriendId);
                     const splitCount = item.assignedTo.length;

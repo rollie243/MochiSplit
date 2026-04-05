@@ -33,8 +33,8 @@ function App() {
   const [friends, setFriends] = useState([]);
   const [billMeta, setBillMeta] = useState({
     restaurantName: '',
-    serviceChargePercent: 0,
-    taxPercent: 0,
+    serviceChargePercent: 10,
+    taxPercent: 9,
     subtotal: 0,
   });
   const nextStep = () => setStep((s) => s + 1);
@@ -43,7 +43,7 @@ function App() {
     setStep(1);
     setItems([]);
     setFriends([]);
-    setBillMeta({ restaurantName: '', serviceChargePercent: 0, taxPercent: 0, subtotal: 0 });
+    setBillMeta({ restaurantName: '', serviceChargePercent: 10, taxPercent: 9, subtotal: 0 });
   };
 
   const handleItemsExtracted = (result) => {
@@ -51,7 +51,7 @@ function App() {
     setBillMeta({
       restaurantName: result.restaurantName || '',
       serviceChargePercent: result.serviceChargePercent || 10,
-      taxPercent: result.taxPercent || 0,
+      taxPercent: result.taxPercent || 9,
       subtotal: result.subtotal || 0,
       isManual: !!result.isManual
     });

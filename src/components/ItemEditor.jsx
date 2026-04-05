@@ -56,7 +56,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
             className="flex flex-col gap-5 pt-12 pb-10"
         >
             {/* Single-line title */}
-            <div className="mb-2">
+            <div className="mb1">
                 <h1 className="text-title text-text">
                     {billMeta?.isManual ? "Add your" : "Review your"} <span className="text-peach-dark">yummy items</span> {billMeta?.isManual ? "✍️" : "🧾"}
                 </h1>
@@ -99,7 +99,7 @@ export default function ItemEditor({ items, setItems, billMeta, setBillMeta, onN
                                     <span className="w-7 h-7 rounded-full bg-cream-light flex items-center justify-center text-xs font-extrabold text-text-secondary">
                                         {idx + 1}
                                     </span>
-                                    <span className="flex-1 text-sm font-bold text-text truncate">{item.name}</span>
+                                    <span className="flex-1 text-sm font-bold text-text truncate min-w-0">{item.name}</span>
                                     <span className="text-sm font-extrabold text-text">{formatCurrency(item.price)}</span>
                                     <button onClick={() => startEdit(item)} className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center text-text-muted hover:text-text transition-colors">
                                         <Edit3 size={14} />

@@ -63,7 +63,7 @@ export default function FriendsManager({ friends, setFriends, onNext }) {
             className="flex flex-col gap-6 pt-12 pb-10"
         >
             {/* Single-line title */}
-            <div className="mb-1">
+            <div className="mb1">
                 <h1 className="text-title text-text">Who's <span className="text-mint-dark">splitting?</span> 👥</h1>
                 <p className="text-sm text-text-secondary font-medium mt-2">Add everyone sharing the bill</p>
             </div>
